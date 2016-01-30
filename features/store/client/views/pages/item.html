@@ -1,0 +1,28 @@
+<template name="storeItem">
+    <main class="ui container">
+        <div class="ui very relaxed items">
+            {{> itemHeader}}
+            <div class="ui clearing divider"></div>
+            <div class="ui grid container">
+                <div class="six wide column">
+                    {{> imageGallery}}
+                </div>
+                <div class="ten wide column">
+                    {{> itemDetails}}
+                </div>
+            </div>
+        </div>
+        {{> comments}}
+        <h3 class="ui header">Third header</h3>
+        <div class="ui six link stackable cards">
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+        </div>
+
+    </main>
+</template>

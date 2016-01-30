@@ -1,0 +1,10 @@
+<template name="adminMain">
+    <main class="ui container grid">
+        <div class="three wide column">
+            {{> adminSidebar}}
+        </div>
+        <div class="thirteen wide column">
+            {{> Template.dynamic template=main}}
+        </div>
+    </main>
+</template>

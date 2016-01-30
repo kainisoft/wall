@@ -1,0 +1,4 @@
+local
+.idea
+/core/client/theme/*
+!/core/client/theme/custom.semantic.json

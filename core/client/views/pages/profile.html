@@ -1,0 +1,49 @@
+<template name="profile">
+    <main class="ui very padded container">
+        <div class="ui horizontal list">
+            <div class="item">
+                <img class="ui avatar image" src="/matthew.png">
+                <div class="content">
+                    <a class="header">Rachel</a>
+                    Top Contributor
+                </div>
+            </div>
+            <div class="item">
+                <button class="ui primary button" id="send-message">
+                    Send message
+                </button>
+                <div class="ui small modal">
+                    <i class="close icon"></i>
+                    <div class="header">Написать отзыв</div>
+                    <div class="content">
+                        <div class="ui large form">
+                            <div class="required field">
+                                <label>Как Вас зовут?</label>
+                                <input type="text" placeholder="Full Name">
+                            </div>
+                            <div class="required field">
+                                <label>Что Вы думаете об этом товаре?</label>
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <div class="ui approve button">Approve</div>
+                        <div class="ui button">Neutral</div>
+                        <div class="ui cancel button">Cancel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class="ui header">Projects of this user</h3>
+        <div class="ui four link stackable cards">
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+            {{> slot}}
+        </div>
+    </main>
+</template>

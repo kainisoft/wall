@@ -1,0 +1,34 @@
+<template name="storeSlotList">
+    <div class="ui list">
+        <div class="ui floating labeled icon dropdown button">
+            <i class="filter icon"></i>
+            <span class="text">Filter</span>
+            <div class="menu">
+                <div class="header">
+                    Сортировать по...
+                </div>
+                <div class="item">
+                    <div class="ui red empty circular label"></div>
+                    Important
+                </div>
+                <div class="item">
+                    <div class="ui blue empty circular label"></div>
+                    Announcement
+                </div>
+                <div class="item">
+                    <div class="ui black empty circular label"></div>
+                    Discussion
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui four link stackable cards">
+        {{> slot}}
+        {{> slot}}
+        {{> slot}}
+        {{> slot}}
+        {{> slot}}
+        {{> slot}}
+        {{> slot}}
+    </div>
+</template>

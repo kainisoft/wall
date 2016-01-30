@@ -1,0 +1,40 @@
+<template name="headerMenu">
+    <div class="ui grid">
+        <div class="row">
+            <div class="three wide column">
+                <a href="javascript://" class="header item">
+                    <img class="ui middle aligned mini image" src="/logo.png">
+                    <span>Project Name</span>
+                </a>
+            </div>
+            <div class="thirteen wide column">
+                <div class="ui grid">
+                    <div class="twelve wide column">
+                        <div class="ui fluid action input">
+                            <input type="text" placeholder="Search...">
+                            <div class="ui selection simple dropdown">
+                                <input type="hidden" name="gender">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Gender</div>
+                                <div class="menu">
+                                    <div class="item" data-value="male" data-text="Male">
+                                        <i class="male icon"></i>
+                                        Male
+                                    </div>
+                                    <div class="item" data-value="female" data-text="Female">
+                                        <i class="female icon"></i>
+                                        Female
+                                    </div>
+                                </div>
+                            </div>
+                            <div type="submit" class="ui button">Search</div>
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <button class="fluid ui positive  button">Добавить объявление</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
