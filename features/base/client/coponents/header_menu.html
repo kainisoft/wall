@@ -1,11 +1,11 @@
-<template name="adminHeader">
+<template name="baseHeaderMenu">
     <div class="ui stackable borderless menu">
         <div class="ui container">
-            <a class="item">
-                <i class="home icon"></i> Home
+            <a href="{{path 'signin'}}" class="item">
+                <i class="home icon"></i> Sign In
             </a>
-            <a class="item">
-                <i class="grid layout icon"></i> Browse
+            <a href="{{path 'join'}}" class="item">
+                <i class="grid layout icon"></i> Join
             </a>
             <a class="item">
                 <i class="mail icon"></i> Messages

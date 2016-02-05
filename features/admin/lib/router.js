@@ -8,12 +8,12 @@ var adminRoutes = FlowRouter.group({
 adminRoutes.route('/', {
     name: 'admin',
     action() {
-        adminContentActionRender('adminMain');
+        adminContentActionRender('adminIndex');
     }
 });
 
 adminRoutes.route('/menus', {
-    name: 'menus',
+    name: 'admin.menus',
     action() {
         adminContentActionRender('adminMenus');
     }

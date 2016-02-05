@@ -10,11 +10,23 @@ mongo                   # The database Meteor supports right now
 blaze-html-templates    # Compile .html files into Meteor Blaze views
 session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
+underscore              # Collection of small helpers: _.map, _.each, ...
 tracker                 # Meteor's client-side reactive programming library
+random                  # Provides several functions for generating random numbers
 
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+# Accounts
+accounts-password
+useraccounts:semantic-ui
+useraccounts:flow-routing
+
+#aldeed
+#aldeed:autoform
+#aldeed:simple-schema
+aldeed:template-extension
 
 kadira:flow-router
 kadira:blaze-layout

@@ -1,0 +1,21 @@
+<template name="authTextField">
+    <div class="at-input {{#if required}} required {{/if}} {{#if isValidating}} validating {{/if}} {{#if hasError}} error {{/if}} field">
+        {{#if showLabels}}
+            <label>
+                {{displayName}}
+            </label>
+        {{/if}}
+        <div class="ui left icon input fluid {{#if isValidating}} loading {{/if}}">
+            {{#if options.inputIcon}}
+                <i class="{{options.inputIcon}} icon"></i>
+            {{/if}}
+            <input type="{{type}}" id="at-field-{{_id}}" name="at-field-{{_id}}" placeholder="{{placeholder}}" {{disabled}} autocapitalize="none" autocorrect="off">
+            {{#if hasIcon}}
+                <i class="{{iconClass}} icon"></i>
+            {{/if}}
+        </div>
+        {{#if hasError}}
+            <div class="ui red pointing label">{{errorText}}</div>
+        {{/if}}
+    </div>
+</template>

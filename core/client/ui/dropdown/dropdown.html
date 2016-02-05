@@ -1,0 +1,22 @@
+<template name="uiDropDown">
+    <a id="{{id}}" class="ui simple dropdown item">
+        {{# if icon}}
+            <i class="{{icon}} icon"></i>
+        {{/if}}
+        {{label}}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {{#each menu in menus}}
+                {{> Template.dynamic menu}}
+            {{/each}}
+        </div>
+    </a>
+</template>
+
+<template name="uiDropDownItem">
+    <a id="{{id}}" href="{{href}}" class="item" data-value="{{value}}">
+        {{#if icon}}<i class="{{icon}} icon"></i>{{/if}}
+
+        {{label}}
+    </a>
+</template>

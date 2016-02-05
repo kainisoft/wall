@@ -1,0 +1,12 @@
+<template name="adminHeaderMenu">
+    <div class="ui stackable borderless menu">
+        <div class="ui container">
+            <a href="{{path 'home'}}" class="item">
+                <i class="home icon"></i> Home
+            </a>
+            <div class="right menu">
+                {{> Template.dynamic uiProfileDropDown }}
+            </div>
+        </div>
+    </div>
+</template>

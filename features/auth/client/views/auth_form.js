@@ -1,0 +1,1 @@
+Template.authForm.replaces('atPwdForm');

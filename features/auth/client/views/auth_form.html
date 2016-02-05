@@ -1,0 +1,18 @@
+<template name="authForm">
+    <div class="at-pwd-form">
+        <form id="at-pwd-form" action="#" method="POST" novalidate class="ui form">
+            <div class="ui stacked very padded">
+                {{#each fields}}
+                    {{> atInput}}
+                {{/each}}
+                {{#if showReCaptcha}}
+                    {{> atReCaptcha}}
+                {{/if}}
+                {{#if showForgotPasswordLink}}
+                    {{> atPwdLink}}
+                {{/if}}
+                {{> atPwdFormBtn}}
+            </div>
+        </form>
+    </div>
+</template>

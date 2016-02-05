@@ -1,0 +1,1 @@
+Template.authTextField.replaces('atTextInput');
