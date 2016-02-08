@@ -2,7 +2,7 @@
     <div class="ui grid">
         <div class="row">
             <div class="three wide column">
-                <a href="javascript://" class="header item">
+                <a href="{{path 'home'}}" class="header item">
                     <img class="ui middle aligned mini image" src="/logo.png">
                     <span>Project Name</span>
                 </a>
@@ -31,7 +31,10 @@
                         </div>
                     </div>
                     <div class="four wide column">
-                        <button class="fluid ui positive  button">Добавить объявление</button>
+                        <a href="{{path 'store-add-ads'}}">
+                            <button type="button" class="fluid ui positive  button">Добавить объявление</button>
+                        </a>
+
                     </div>
                 </div>
             </div>

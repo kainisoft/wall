@@ -13,6 +13,7 @@ jquery                  # Helpful client-side library
 underscore              # Collection of small helpers: _.map, _.each, ...
 tracker                 # Meteor's client-side reactive programming library
 random                  # Provides several functions for generating random numbers
+reactive-var
 
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
@@ -22,13 +23,26 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 accounts-password
 useraccounts:semantic-ui
 useraccounts:flow-routing
+#alanning:roles
 
-#aldeed
-#aldeed:autoform
-#aldeed:simple-schema
+# React
+#react
+#react-template-helper
+
+# aldeed
+aldeed:autoform
+aldeed:simple-schema
+aldeed:collection2
 aldeed:template-extension
 
+# kadira
 kadira:flow-router
 kadira:blaze-layout
+
+# Semantic UI
 semantic:ui
 flemay:less-autoprefixer
+
+# My packages
+formbuilder
+nestable

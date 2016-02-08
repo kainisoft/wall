@@ -1,8 +1,8 @@
-AuthRouterGroup = FlowRouter.group({
+AuthRoutes = FlowRouter.group({
     triggersEnter: [AccountsTemplates.ensureSignedIn]
 });
 
-AuthRouterGroup.route('/user', {
+AuthRoutes.route('/user', {
     name: 'user',
     action() {
         blankActionRender('authorization');
@@ -12,6 +12,12 @@ AuthRouterGroup.route('/user', {
 AccountsTemplates.configureRoute('signIn', {
     name: 'auth',
     path: '/auth',
+    layoutTemplate: 'authContent',
+    template: 'auth'
+});
+AccountsTemplates.configureRoute('signUp', {
+    name: 'join',
+    path: '/join',
     layoutTemplate: 'authContent',
     template: 'auth'
 });

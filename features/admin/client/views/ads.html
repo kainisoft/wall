@@ -1,0 +1,53 @@
+<template name="adminAds">
+    <div class="dd">
+        {{#if Template.subscriptionsReady}}
+            <ol class="dd-list">
+                {{> categoryList categories=categories createCategoryHandler=createChildCategory formbuilder=formBuilder}}
+            </ol>
+        {{else}}
+            <div class="ui segment">
+                <div class="ui active inverted dimmer">
+                    <div class="ui large text loader">Loading</div>
+                </div>
+                <br /><br /><br /><br />
+            </div>
+        {{/if}}
+    </div>
+
+    <div class="ui hidden divider"></div>
+    <button id="new-group" class="ui button">Add group</button>
+    <div class="ui modal foom">
+        <i class="close icon"></i>
+        <div class="header">
+            Modal Title
+        </div>
+        <div class="image content">
+            {{#autoForm collection="Categories.collection" id="newGroup" class="ui form" type="method" meteormethod="categories.add" resetOnSuccess="false"}}
+                {{> afFieldInput name="categoryId" type="hidden" value=categoryId}}
+                {{> afFieldInput name='name' type='text'}}
+                <button type="submit" class="ui button">Insert</button>
+            {{/autoForm}}
+        </div>
+    </div>
+
+    <div id="foo" class="ui modal formbuilder">
+        <i class="close icon"></i>
+        <div class="header">
+            Profile Picture
+        </div>
+        <div class="content">
+            <form action="">
+                <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">
+                Nope
+            </div>
+            <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<template name="categoryList">
+    {{#each category in categories}}
+        <li class="dd-item" data-id="3">
+            <button data-action="collapse" type="button">Collapse</button>
+            <button data-action="expand" type="button" style="display: none;">Expand</button>
+            <div class="dd-handle">
+                <i class="folder icon"></i>
+                {{category.name}}
+                <button class="js-create-child dd-nodrag mini ui button" data-category-id="{{category._id}}">
+                    Create child category
+                </button>
+                <button class="js-form-builder dd-nodrag mini ui button" data-category-id="{{category._id}}">
+                    Form builder
+                </button>
+            </div>
+            {{#if hasChild category._id}}
+                <ol class="dd-list">
+                    {{> categoryList categories=(childCategories category._id)}}
+                </ol>
+            {{/if}}
+        </li>
+    {{/each}}
+</template>

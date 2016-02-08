@@ -1,6 +1,6 @@
 AccountsTemplates.configure({
     // Behavior
-    forbidClientAccountCreation: true,
+    forbidClientAccountCreation: false,
 
     // Appearance
     showForgotPasswordLink: true,
@@ -68,7 +68,7 @@ AccountsTemplates.addFields([
         _id: "password",
         type: "password",
         required: true,
-        minLength: 6,
+        minLength: 4,
         displayName: {
             "default": "password",
             changePwd: "newPassword",

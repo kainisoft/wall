@@ -12,6 +12,13 @@ adminRoutes.route('/', {
     }
 });
 
+adminRoutes.route('/ads-form', {
+    name: 'admin-ads',
+    action() {
+        adminContentActionRender('adminAds')
+    }
+});
+
 adminRoutes.route('/menus', {
     name: 'admin.menus',
     action() {

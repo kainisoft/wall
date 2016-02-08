@@ -2,21 +2,21 @@
     <div class="ui two column centered grid">
         <div class="column">
             <div class="ui top attached tabular menu">
-                <a class="active item" data-tab="first">
+                <a class="active item" data-tab="auth">
                     <i class="arrow circle right icon"></i>
                     Sign in
                 </a>
-                <a class="item" data-tab="second">
+                <a class="item" data-tab="join">
                     <i class="add user icon"></i>
                     Registration
                 </a>
             </div>
-            <div class="ui bottom attached active tab segment" data-tab="first">
+            <div class="ui bottom attached active tab segment" data-tab="auth">
                 <div class="ui basic segment">
                     {{> atForm state='signIn'}}
                 </div>
             </div>
-            <div class="ui bottom attached tab segment" data-tab="second">
+            <div class="ui bottom attached tab segment" data-tab="join">
                 <div class="ui basic segment">
                     {{> atForm state='signUp'}}
                 </div>
