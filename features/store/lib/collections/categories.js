@@ -1,6 +1,6 @@
-Categories = {};
-Categories.collection = new Mongo.Collection('Categories');
-Categories.shcema = new SimpleSchema({
+StoreCategories = {};
+StoreCategories.collection = new Mongo.Collection('StoreCategories');
+StoreCategories.shcema = new SimpleSchema({
     categoryId: {
         type: String,
         regEx: SimpleSchema.RegEx.Id,
@@ -19,4 +19,4 @@ Categories.shcema = new SimpleSchema({
         optional: true
     }
 });
-Categories.collection.attachSchema(Categories.shcema);
+StoreCategories.collection.attachSchema(StoreCategories.shcema);

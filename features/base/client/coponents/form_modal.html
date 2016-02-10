@@ -1,0 +1,22 @@
+<template name="formModal">
+    <div id="form_builder" class="ui small modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Profile Picture
+        </div>
+        <div class="content">
+            {{#autoForm schema="Forms.schema" id="form" class="ui form" type="normal" doc=doc template="semanticUI"}}
+                {{> afQuickField name="fields"}}
+            {{/autoForm}}
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">
+                Nope
+            </div>
+            <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+</template>

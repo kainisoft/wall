@@ -1,6 +1,6 @@
 Template.categoryList.onCreated(function() {
     this.autorun(() => {
-        this.subscribe('categories.all');
+        this.subscribe('store.categories.all');
     });
 
     this.getCategoryId = ( element ) => {
@@ -38,10 +38,10 @@ Template.categoryList.onRendered(function() {
 
 Template.categoryList.helpers({
     hasChild( id ){
-        return Categories.collection.find({categoryId: id}).count();
+        return StoreCategories.collection.find({categoryId: id}).count();
     },
     childCategories( id ){
-        return Categories.collection.find({categoryId: id}).fetch() || [];
+        return StoreCategories.collection.find({categoryId: id}).fetch() || [];
     }
 });
 

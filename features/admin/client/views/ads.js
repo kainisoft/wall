@@ -2,7 +2,7 @@ Template.adminAds.onCreated(function() {
     this.categoryId = new ReactiveVar(null);
 
     this.autorun(() => {
-        this.subscribe('categories.all');
+        this.subscribe('store.categories.all');
     });
 
     this.showCreateCategoryModal = ( categoryId ) => {
@@ -10,8 +10,14 @@ Template.adminAds.onCreated(function() {
         this.$('.foom').modal({detachable: false}).modal('show');
     };
 
-    this.showFormBuilderModal = ( categoryId ) => {
-        this.$('.formbuilder').modal({detachable: false}).modal('show');
+    this.registerShowModalFunc = ( func ) => {
+        this.showFormBuilderModal = ( categoryId ) => {
+            func(categoryId).then(function( formId ) {
+                Meteor.call('store.categoryForm.add', {categoryId, formId}, function( err, res ) {
+                    var f = 90;
+                });
+            });
+        };
     };
 });
 
@@ -25,12 +31,11 @@ Template.adminAds.onRendered(function() {
     this.$('#new-group').on('click', function() {
         template.$('.foom').modal({detachable: false}).modal('show');
     });
-    this.$('#foo textarea').formBuilder();
 });
 
 Template.adminAds.helpers({
     categories(){
-        return Categories.collection.find({categoryId: {$exists: false}}).fetch() || [];
+        return StoreCategories.collection.find({categoryId: {$exists: false}}).fetch() || [];
     },
     categoryId() {
         return Template.instance().categoryId.get();
@@ -48,6 +53,9 @@ Template.adminAds.helpers({
         return ( categoryId ) => {
             template.showFormBuilderModal(categoryId);
         };
+    },
+    showModal() {
+        return Template.instance().registerShowModalFunc;
     }
 });
 

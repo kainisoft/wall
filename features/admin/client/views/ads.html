@@ -22,7 +22,7 @@
             Modal Title
         </div>
         <div class="image content">
-            {{#autoForm collection="Categories.collection" id="newGroup" class="ui form" type="method" meteormethod="categories.add" resetOnSuccess="false"}}
+            {{#autoForm collection="StoreCategories.collection" id="newGroup" class="ui form" type="method" meteormethod="store.categories.add" resetOnSuccess="false"}}
                 {{> afFieldInput name="categoryId" type="hidden" value=categoryId}}
                 {{> afFieldInput name='name' type='text'}}
                 <button type="submit" class="ui button">Insert</button>
@@ -30,24 +30,5 @@
         </div>
     </div>
 
-    <div id="foo" class="ui modal formbuilder">
-        <i class="close icon"></i>
-        <div class="header">
-            Profile Picture
-        </div>
-        <div class="content">
-            <form action="">
-                <textarea name="formBuilder" id="formBuilder" cols="30" rows="10"></textarea>
-            </form>
-        </div>
-        <div class="actions">
-            <div class="ui black deny button">
-                Nope
-            </div>
-            <div class="ui positive right labeled icon button">
-                Yep, that's me
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
+    {{> formModal onShowModal=showModal}}
 </template>
