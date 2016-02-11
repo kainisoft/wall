@@ -8,24 +8,9 @@
                     </div>
                     <p>Поля отмеченные звездочкой обзательны для заполнения</p>
                 </div>
+
                 <form class="ui form attached fluid segment">
-                    <div class="field">
-                        <label>Gender</label>
-                        <div class="ui fluid selection dropdown">
-                            <input name="gender" type="hidden" value="female">
-                            <i class="dropdown icon"></i>
-                            <div class="text">Default Value</div>
-                            <div class="menu">
-                                <div class="header">
-                                    <i class="tags icon"></i>
-                                    Tag Label
-                                </div>
-                                <div class="item">Choice 1</div>
-                                <div class="item">Choice 2</div>
-                                <div class="item">Choice 3</div>
-                            </div>
-                        </div>
-                    </div>
+                    {{> storeCategoryInput}}
                     <div class="two fields">
                         <div class="field">
                             <label>First Name</label>

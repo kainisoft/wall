@@ -1,0 +1,21 @@
+<template name="storeCategoryInput">
+    <div class="field">
+        <label>Category</label>
+        <div id="store-category-input-dd" class="ui fluid selection dropdown">
+            <input name="categoryId" type="hidden" value="">
+            <i class="dropdown icon"></i>
+            <div class="text">Please, choose a category</div>
+            <div class="menu">
+                {{#each group in groups}}
+                    <div class="grey header" data-group-id="{{group.id}}">
+                        <i class="tags icon"></i>
+                        {{group.label}}
+                    </div>
+                    {{#each option in group.options}}
+                        <div class="item" data-group-id="{{option._id}}" >{{option.name}}</div>
+                    {{/each}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>

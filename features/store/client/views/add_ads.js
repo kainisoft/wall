@@ -1,3 +1,3 @@
 Template.storeAddAds.onRendered(function() {
-    this.$('.fluid.dropdown').dropdown();
+    //this.$('.fluid.dropdown').dropdown();
 });

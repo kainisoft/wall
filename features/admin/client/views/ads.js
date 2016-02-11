@@ -13,9 +13,11 @@ Template.adminAds.onCreated(function() {
     this.registerShowModalFunc = ( func ) => {
         this.showFormBuilderModal = ( categoryId ) => {
             func(categoryId).then(function( formId ) {
-                Meteor.call('store.categoryForm.add', {categoryId, formId}, function( err, res ) {
+                Meteor.call('store.categoryForm.insert', {categoryId, formId}, function( err, res ) {
                     var f = 90;
                 });
+            }).catch(function() {
+
             });
         };
     };

@@ -1,7 +1,11 @@
 Meteor.methods({
-    'store.categoryForm.add'( categoryForm ) {
+    'store.categoryForm.insert'( categoryForm ) {
         StoreCategoryForm.schema.validate(categoryForm);
 
-        return StoreCategoryForm.collection.insert(categoryForm);
+        var exists = StoreCategoryForm.collection.find(categoryForm).count();
+
+        if (!exists) {
+            return StoreCategoryForm.collection.insert(categoryForm);
+        }
     }
 });

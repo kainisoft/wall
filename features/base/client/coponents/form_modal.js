@@ -1,48 +1,51 @@
 Template.formModal.onCreated(function() {
     this.doc = new ReactiveVar(null);
+    this.formCollection = new Meteor.Collection('categoryRelatedForm');
 
     this.showModal = ( categoryId ) => {
+        this.doc.set(null);
         if (categoryId) {
             this.autorun(() => {
                 this.subscribe('store.categoryForm.formByCategory', categoryId);
             });
 
             this.autorun(() => {
-                var categoryForm = Forms.collection.findOne({categoryId});
+                var categoryForm = StoreCategoryForm.collection.findOne({categoryId});
+
+                if (categoryForm) {
+                    this.doc.set(
+                        this.formCollection.findOne(categoryForm.formId)
+                    );
+                }
             });
         }
 
-        return new Promise(function( resolve, reject ) {
+        return new Promise(( resolve, reject ) => {
             this.$('#form_builder').modal({
                 detachable: false,
-                onApprove() {
+                onApprove: () => {
                     if (AutoForm.validateForm('form')) {
-                        var formValues = AutoForm.getFormValues('form');
+                        const formValues = AutoForm.getFormValues('form'),
+                            handler = ( err, res ) => {
+                                if (err) {
+                                    reject(err);
+                                } else {
+                                    resolve(res);
+                                }
+                            },
+                            doc = this.doc.get();
 
-                        Meteor.call('forms.add', formValues.insertDoc, ( err, res ) => {
-                            if (err) {
-                                reject(err);
-                            } else {
-                                resolve(res);
-                            }
-                        });
+                        if (doc) {
+                            Meteor.call('forms.update', doc._id, formValues.updateDoc, handler);
+                        } else {
+                            Meteor.call('forms.insert', formValues.insertDoc, handler);
+                        }
+                    } else {
+                        return false;
                     }
-
-                    return false;
                 },
                 onDeny: reject
             }).modal('show');
-            AutoForm.hooks({
-                form: {
-                    onSubmit: function (doc) {
-                        var f = 90;
-                        //PeopleSchema.clean(doc);
-                        //console.log("People doc with auto values", doc);
-                        //this.done();
-                        //return false;
-                    }
-                }
-            });
         });
     };
 
