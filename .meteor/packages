@@ -15,6 +15,7 @@ underscore              # Collection of small helpers: _.map, _.each, ...
 tracker                 # Meteor's client-side reactive programming library
 random                  # Provides several functions for generating random numbers
 reactive-var
+reactive-dict
 
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.

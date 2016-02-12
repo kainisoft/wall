@@ -1,10 +1,24 @@
 Template.storeCategoryInput.onCreated(function() {
-    this.groups = new ReactiveVar([]);
+    this.categoryId = new ReactiveVar(null);
+
     this.autorun(() => {
         this.subscribe('store.categories.all');
     });
+});
 
-    this.autorun(() => {
+Template.storeCategoryInput.onRendered(function() {
+    $('#store-category-input-dd', this.firstNode).dropdown({
+        on: 'hover',
+        delay: {hide: 50, show: 50},
+        metadata: {value: 'group-id'},
+        onChange: ( value ) => {
+            this.categoryId.set(value);
+        }
+    });
+});
+
+Template.storeCategoryInput.helpers({
+    groups() {
         let collection = StoreCategories.collection.find({categoryId: {$exists: false}}).fetch();
         let groups = _.reduce(collection, ( carry, group ) => {
             let options = StoreCategories.collection.find({categoryId: group._id}).fetch();
@@ -17,22 +31,10 @@ Template.storeCategoryInput.onCreated(function() {
 
             return carry;
         }, []);
-        this.groups.set(groups);
-    });
-});
 
-Template.storeCategoryInput.onRendered(function() {
-    this.$('#store-category-input-dd').dropdown({
-        on: 'hover',
-        delay: {
-            hide: 50,
-            show: 50
-        }
-    });
-});
-
-Template.storeCategoryInput.helpers({
-    groups() {
-        return Template.instance().groups.get();
+        return groups;
+    },
+    categoryId() {
+        return Template.instance().categoryId.get();
     }
 });
