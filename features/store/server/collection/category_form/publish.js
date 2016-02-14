@@ -8,7 +8,6 @@ Meteor.publishComposite('store.categoryForm.formByCategory', function( categoryI
             return StoreCategoryForm.collection.find({categoryId});
         },
         children: [{
-            collectionName: "categoryRelatedForm",
             find( categoryForm ) {
                 return Forms.collection.find(categoryForm.formId);
             }

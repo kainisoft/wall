@@ -1,28 +1,37 @@
-Forms = {};
-Forms.collection = new Mongo.Collection('Forms');
+Forms = new Collection('Forms');
 Forms.fieldSchema = new SimpleSchema({
     name: {
         type: String,
         label: 'Name'
     },
-    presentation: {
-        type: String,
-        allowedValues: ['text', 'select', 'rich-text', 'checkbox', 'checkbox-group', 'date'],
-        label: 'Presentation'
-    },
-    required: {
-        type: Boolean,
-        label: ''
-    },
     label: {
         type: String
     },
-    description: {
+    presentation: {
         type: String,
-        optional: true
+        allowedValues: ['text', 'select', 'SelectFromDataRange', 'rich-text', 'checkbox', 'checkbox-group', 'date'],
+        label: 'Presentation',
+        autoform: {
+            type: "select",
+            options: function() {
+                return _.reduce(Forms.fieldSchema.getAllowedValuesForKey('presentation'), ( carry, value ) => {
+                    carry[value] = value;
+
+                    return carry;
+                }, {});
+            }
+        }
     },
     values: {
-        type: [String],
+    type: [String],
+        optional: true
+    },
+    required: {
+        type: Boolean,
+        optional: true
+    },
+    description: {
+        type: String,
         optional: true
     }
 });
@@ -32,4 +41,4 @@ Forms.schema = new SimpleSchema({
         minCount: 1
     }
 });
-Forms.collection.attachSchema(Forms.schema);
+Forms.attachSchema(Forms.schema);

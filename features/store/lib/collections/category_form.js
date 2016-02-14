@@ -1,5 +1,4 @@
-StoreCategoryForm = {};
-StoreCategoryForm.collection = new Mongo.Collection('StoreCategoryForm');
+StoreCategoryForm = new Collection('StoreCategoryForm');
 StoreCategoryForm.schema = new SimpleSchema({
     categoryId: {
         type: String,
@@ -10,5 +9,4 @@ StoreCategoryForm.schema = new SimpleSchema({
         regEx: SimpleSchema.RegEx.Id
     }
 });
-StoreCategoryForm.collection.attachSchema(StoreCategoryForm.schema);
-StoreCategoryForm.publicFields = {categoryId: 1, formId: 1}; // TODO any it's not working. _id always return
+StoreCategoryForm.attachSchema(StoreCategoryForm.schema);

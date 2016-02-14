@@ -20,3 +20,11 @@ StoreCategories.shcema = new SimpleSchema({
     }
 });
 StoreCategories.collection.attachSchema(StoreCategories.shcema);
+
+StoreCategories.findRoot = function() {
+    return this.collection.find({categoryId: {$exists: false}}).fetch();
+};
+
+StoreCategories.findChild = function( categoryId ) {
+    return this.collection.find({categoryId}).fetch()
+};

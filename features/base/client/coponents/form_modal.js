@@ -1,6 +1,5 @@
 Template.formModal.onCreated(function() {
     this.doc = new ReactiveVar(null);
-    this.formCollection = new Meteor.Collection('categoryRelatedForm');
 
     this.showModal = ( categoryId ) => {
         this.doc.set(null);
@@ -10,11 +9,11 @@ Template.formModal.onCreated(function() {
             });
 
             this.autorun(() => {
-                var categoryForm = StoreCategoryForm.collection.findOne({categoryId});
+                var categoryForm = StoreCategoryForm.findByKey('categoryId', categoryId);
 
                 if (categoryForm) {
                     this.doc.set(
-                        this.formCollection.findOne(categoryForm.formId)
+                        Forms.findById(categoryForm.formId)
                     );
                 }
             });

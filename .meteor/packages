@@ -44,3 +44,5 @@ flemay:less-autoprefixer
 
 # My packages
 nestable
+
+momentjs:moment

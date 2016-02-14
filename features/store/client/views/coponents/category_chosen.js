@@ -1,27 +1,36 @@
-Template.storeCategoryInput.onCreated(function() {
+CHOSEN_SESSION_NAME = 'chosenCategoryId';
+
+Template.storeCategoryChosen.onCreated(function() {
     this.categoryId = new ReactiveVar(null);
+
+    Session.setDefault(CHOSEN_SESSION_NAME, null);
 
     this.autorun(() => {
         this.subscribe('store.categories.all');
     });
 });
 
-Template.storeCategoryInput.onRendered(function() {
+Template.storeCategoryChosen.onRendered(function() {
     $('#store-category-input-dd', this.firstNode).dropdown({
         on: 'hover',
         delay: {hide: 50, show: 50},
-        metadata: {value: 'group-id'},
+        metadata: {value: 'groupId'},
         onChange: ( value ) => {
             this.categoryId.set(value);
+            Session.set(CHOSEN_SESSION_NAME, value);
         }
     });
 });
 
-Template.storeCategoryInput.helpers({
+Template.storeCategoryChosen.onDestroyed(function() {
+    Session.set(CHOSEN_SESSION_NAME, null);
+});
+
+Template.storeCategoryChosen.helpers({
     groups() {
-        let collection = StoreCategories.collection.find({categoryId: {$exists: false}}).fetch();
+        let collection = StoreCategories.findRoot();
         let groups = _.reduce(collection, ( carry, group ) => {
-            let options = StoreCategories.collection.find({categoryId: group._id}).fetch();
+            let options = StoreCategories.findChild(group._id);
 
             carry.push({
                 id: group._id,

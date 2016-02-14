@@ -1,34 +1,53 @@
 Template.storeCategoryOptions.onCreated(function() {
+    this.id = Random.id();
+    this.categoryId = new ReactiveVar(null);
+
     this.autorun(() => {
         this.subscribe('store.categories.all');
     });
-    this.foo = new ReactiveDict();
-
-    if (this.data.categoryId) {
-        this.foo.set(categoryId, null);
-    }
-
-    this.getOptions = ( categoryId ) => {
-        return categoryId && StoreCategories.collection.find({categoryId}).fetch() || [];
-    };
 });
 
 Template.storeCategoryOptions.onRendered(function() {
-    $('#store-category-input-dd', this.firstNode).dropdown({
-        on: 'hover',
-        delay: {hide: 50, show: 50},
-        metadata: {value: 'group-id'}
-    });
+
 });
 
 Template.storeCategoryOptions.helpers({
-    options() {
-        return Template.instance().getOptions(this.categoryId);
+    id() {
+        return Template.instance().id;
     },
     visibility() {
-        return Template.instance().getOptions(this.categoryId) && 'transition hidden';
+        var template = Template.instance();
+        var options = template.data.categoryId
+            ? StoreCategories.findChild(template.data.categoryId)
+            : [];
+
+        if (options.length) {
+            $('.ui.dropdown', `#${template.id}`)
+                .dropdown({
+                    on: 'hover',
+                    delay: {hide: 50, show: 50},
+                    metadata: {
+                        value: 'groupId',
+                        placeholderText: 'placeholder'
+                    },
+                    onChange: ( value ) => {
+                        value || (value = null);
+                        template.categoryId.set(value);
+                        Session.set(CHOSEN_SESSION_NAME, value);
+                    }
+                })
+                .dropdown('refresh')
+                .dropdown('restore defaults');
+        } else {
+            return 'transition hidden';
+        }
     },
-    option() {
-        return Template.instance().foo.get();
+    options() {
+        var categoryId = Template.instance().data.categoryId;
+
+        return categoryId ? StoreCategories.findChild(categoryId) : [];
+    },
+    child() {
+        return Template.instance().categoryId.get();
     }
 });

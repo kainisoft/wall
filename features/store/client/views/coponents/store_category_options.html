@@ -1,16 +1,18 @@
 <template name="storeCategoryOptions">
-    <div class="{{visibility}} field">
-        <div id="store-category-input-dd" class="ui fluid selection dropdown">
+    <div id="{{id}}" class="{{visibility}} field">
+        <div class="ui fluid selection dropdown" data-placeholder="Please, choose a category">
             <input type="hidden" value="">
             <i class="dropdown icon"></i>
             <div class="text">Please, choose a category</div>
             <div class="menu">
                 {{#each option in options}}
-                    <div class="item" data-option-id="{{option._id}}">{{option.name}}</div>
+                    <div class="item" data-group-id="{{option._id}}">{{option.name}}</div>
                 {{/each}}
             </div>
         </div>
     </div>
 
-    <!--{{> storeCategoryOptions categoryId=option}}-->
+    {{#if child}}
+        {{> storeCategoryOptions categoryId=child}}
+    {{/if}}
 </template>
