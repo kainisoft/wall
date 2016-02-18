@@ -1,0 +1,3 @@
+Template.uiSelect.onRendered(function() {
+
+});

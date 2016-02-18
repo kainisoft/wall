@@ -1,9 +1,5 @@
-CHOSEN_SESSION_NAME = 'chosenCategoryId';
-
 Template.storeCategoryChosen.onCreated(function() {
     this.categoryId = new ReactiveVar(null);
-
-    Session.setDefault(CHOSEN_SESSION_NAME, null);
 
     this.autorun(() => {
         this.subscribe('store.categories.all');
@@ -17,13 +13,12 @@ Template.storeCategoryChosen.onRendered(function() {
         metadata: {value: 'groupId'},
         onChange: ( value ) => {
             this.categoryId.set(value);
-            Session.set(CHOSEN_SESSION_NAME, value);
         }
     });
 });
 
 Template.storeCategoryChosen.onDestroyed(function() {
-    Session.set(CHOSEN_SESSION_NAME, null);
+
 });
 
 Template.storeCategoryChosen.helpers({

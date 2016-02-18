@@ -9,7 +9,7 @@
                     <p>Поля отмеченные звездочкой обзательны для заполнения</p>
                 </div>
 
-                <form class="ui form attached fluid segment">
+                {{#autoForm collection="StoreItems.collection" id="add-ads" class="ui form attached fluid segment" type="method" meteormethod="store.categories.add" template="semanticUI"}}
                     {{> storeCategoryChosen}}
                     <div class="two fields">
                         <div class="field">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="ui blue submit button">Submit</div>
-                </form>
+                {{/autoForm}}
                 <div class="ui bottom attached warning message">
                     <i class="icon help"></i>
                     Already signed up? <a href="#">Login here</a> instead.

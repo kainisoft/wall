@@ -31,9 +31,7 @@ Template.storeCategoryOptions.helpers({
                         placeholderText: 'placeholder'
                     },
                     onChange: ( value ) => {
-                        value || (value = null);
-                        template.categoryId.set(value);
-                        Session.set(CHOSEN_SESSION_NAME, value);
+                        template.categoryId.set(value || null);
                     }
                 })
                 .dropdown('refresh')

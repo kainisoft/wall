@@ -1,8 +1,6 @@
-UITextInput = class extends UIInput {
+UIText = class extends UIInput {
     constructor() {
         super();
-
-        this.setType('text');
     }
 
     getTemplateName() {

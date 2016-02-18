@@ -1,0 +1,21 @@
+<template name="uiSelect">
+    <div class="{{#if isRequired}}required {{/if}}field">
+        {{#if hasLabel}}
+            <label>{{label}}</label>
+        {{/if}}
+        <div id="{{id}}" class="ui fluid selection dropdown">
+            <input name="{{name}}" type="hidden" value="">
+            <i class="dropdown icon"></i>
+            <div class="text">Please, choose a category</div>
+            <div class="menu">
+                {{#each menu in menus}}
+                    {{> Template.dynamic menu}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="uiSelectItem">
+    <div class="item" data-value="{{value}}">{{label}}</div>
+</template>

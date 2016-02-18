@@ -6,6 +6,7 @@
         </div>
         <div class="content">
             {{#autoForm schema="Forms.schema" id="form" class="ui form" type="normal" doc=doc template="semanticUI"}}
+                {{> afQuickField name="name"}}
                 {{> afQuickField name="fields"}}
             {{/autoForm}}
         </div>

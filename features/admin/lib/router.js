@@ -25,3 +25,10 @@ adminRoutes.route('/menus', {
         adminContentActionRender('adminMenus');
     }
 });
+
+adminRoutes.route('/forms', {
+    name: 'admin.forms',
+    action() {
+        adminContentActionRender('adminForms');
+    }
+});

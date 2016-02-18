@@ -50,3 +50,45 @@ UICustom = class extends UserInterface {
         return this.getData('value');
     }
 };
+
+UIInput = class extends UICustom {
+    constructor( name ) {
+        super();
+
+        this.data.atts = {
+            name,
+            id: this.data.id,
+            className: []
+        };
+    }
+
+    setAtts( key, value ) {
+        if (_.isObject(key)) {
+            _.extend(this.data.atts, key);
+        } else {
+            this.data.atts[key] = value;
+        }
+
+        return this;
+    }
+
+    setName( name ) {
+        this.setAtts({name});
+    }
+
+    setType( type ) {
+        this.setAtts({type});
+    }
+
+    setPlaceholder( placeholder ) {
+        this.setAtts({placeholder});
+    }
+
+    setClass( className ) {
+        this.data.atts.className.push(className);
+    }
+
+    setRequired( required ) {
+        this.setAtts({required});
+    }
+};

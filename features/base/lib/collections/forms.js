@@ -1,44 +1,42 @@
 Forms = new Collection('Forms');
 Forms.fieldSchema = new SimpleSchema({
     name: {
+        type: String
+    },
+    type: {
         type: String,
-        label: 'Name'
+        allowedValues: ['text', 'select', 'SelectFromDataRange'],
+        label: 'Type'
     },
     label: {
         type: String
     },
-    presentation: {
+    placeholder: {
         type: String,
-        allowedValues: ['text', 'select', 'SelectFromDataRange', 'rich-text', 'checkbox', 'checkbox-group', 'date'],
-        label: 'Presentation',
-        autoform: {
-            type: "select",
-            options: function() {
-                return _.reduce(Forms.fieldSchema.getAllowedValuesForKey('presentation'), ( carry, value ) => {
-                    carry[value] = value;
-
-                    return carry;
-                }, {});
-            }
-        }
+        optional: true
     },
-    values: {
-    type: [String],
+    options: {
+        type: [String],
         optional: true
     },
     required: {
         type: Boolean,
         optional: true
-    },
-    description: {
-        type: String,
-        optional: true
     }
 });
 Forms.schema = new SimpleSchema({
+    name: {
+        type: String,
+        optional: true
+    },
     fields: {
         type: [Forms.fieldSchema],
         minCount: 1
     }
 });
 Forms.attachSchema(Forms.schema);
+Forms.onBeforeInsert(function( userId, doc ) {
+    _.each(doc.fields, function( field ) {
+        field.name = Random.id();
+    });
+});

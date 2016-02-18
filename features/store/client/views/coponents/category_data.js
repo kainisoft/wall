@@ -1,22 +1,21 @@
 Template.storeCategoryData.onCreated(function() {
     this.autorun(() => {
-        var categoryId = Session.get(CHOSEN_SESSION_NAME);
-
-        if (categoryId) {
-            this.subscribe('store.categoryForm.formByCategory', categoryId);
-        }
+        this.subscribe('store.categoryForm.formByCategory', 'NRMXbPE3ypkbMDPZL');
     });
 });
 
 Template.storeCategoryData.onRendered(function() {
     this.autorun(() => {
-        var categoryId = Session.get(CHOSEN_SESSION_NAME);
-        var categoryForm = StoreCategoryForm.findByKey('categoryId', categoryId);
-
-        if (categoryForm) {
-            this.doc.set(
-                Forms.findById(categoryForm.formId)
-            );
-        }
+        var f = 90;
     });
+});
+
+Template.storeCategoryData.helpers({
+    formD() {
+        Template.instance().subscribe('store.categoryForm.formByCategory', this.categoryId);
+
+        var categoryForm = StoreCategoryForm.findByKey('categoryId', this.categoryId);
+
+        return  categoryForm ? Forms.findById(categoryForm.formId) : null;
+    }
 });
