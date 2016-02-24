@@ -1,4 +1,8 @@
 Template.abstract_input.helpers({
+    atts() {
+        return this.atts;
+    },
+
     name() {
         this.atts.name;
     },

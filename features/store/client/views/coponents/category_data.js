@@ -16,6 +16,12 @@ Template.storeCategoryData.helpers({
 
         var categoryForm = StoreCategoryForm.findByKey('categoryId', this.categoryId);
 
-        return  categoryForm ? Forms.findById(categoryForm.formId) : null;
+        if (categoryForm) {
+            var form = Forms.findById(categoryForm.formId);
+
+            return form ? form.name : null;
+        }
+
+        return null;
     }
 });

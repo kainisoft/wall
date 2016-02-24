@@ -1,4 +1,8 @@
 <template name="uiText">
     <div class="field">
+        {{#if hasLabel}}
+            <label>{{label}}</label>
+        {{/if}}
+        <input {{atts}} type="text" class="">
     </div>
 </template>

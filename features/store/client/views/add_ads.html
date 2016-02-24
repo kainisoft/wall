@@ -11,6 +11,8 @@
 
                 {{#autoForm collection="StoreItems.collection" id="add-ads" class="ui form attached fluid segment" type="method" meteormethod="store.categories.add" template="semanticUI"}}
                     {{> storeCategoryChosen}}
+                    {{> form name="test_name"}}
+                    {{> afQuickField name="data.0.fieldName" type="photoUploader"}}
                     <div class="two fields">
                         <div class="field">
                             <label>First Name</label>

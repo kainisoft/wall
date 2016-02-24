@@ -1,21 +1,20 @@
+Template.form.onCreated(function() {
+    if (this.data.name) {
+        this.autorun(() => {
+            this.subscribe('Forms.ByName', this.data.name);
+        });
+    }
+});
+
 Template.form.helpers({
     fields() {
-        return this.fields || [];
-    },
+        var form = Forms.findByKey('name', this.name);
 
-    toAutoFormInput( field ) {
-        switch ( field.type ) {
-            case 'select':
-                field.options = _.object(field.options, field.options);
-                return field;
+        if (form) {
+            return form.fields || [];
         }
-        if (_.contains(['SelectFromDataRange'], field.type)) {
-            return {
 
-            };
-        } else {
-            return field;
-        }
+        return [];
     }
 });
 

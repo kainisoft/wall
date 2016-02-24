@@ -13,10 +13,20 @@
                             <i class="folder icon"></i> {{form.name}}
                         </td>
                         <td>Initial commit</td>
-                        <td class="right aligned collapsing">10 hours ago</td>
+                        <td class="right aligned collapsing">
+                            <button class="ui button js-edit-form" data-form-id="{{form._id}}">
+                                Follow
+                            </button>
+                        </td>
                     </tr>
                 {{/each}}
             </tbody>
         </table>
     {{/if}}
+
+    <button class="js-add-form mini ui button">
+        Add form
+    </button>
+
+    {{> formModal onShowModal=showModal}}
 </template>

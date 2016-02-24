@@ -6,6 +6,14 @@ Meteor.publish('forms.ById', function( id ) {
     return Forms.collection.find(id);
 });
 
-Meteor.publish('forms.Named', function() {
+Meteor.publish('Forms.ByName', function( name ) {
+    new SimpleSchema({
+        name: {type: String}
+    }).validate({name});
+
+    return Forms.find({name});
+});
+
+Meteor.publish('Forms.Named', function() {
     return Forms.find({name : {$exists: true, $ne : ''}});
 });

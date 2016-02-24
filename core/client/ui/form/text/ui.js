@@ -1,6 +1,6 @@
 UIText = class extends UIInput {
-    constructor() {
-        super();
+    constructor( name ) {
+        super(name);
     }
 
     getTemplateName() {

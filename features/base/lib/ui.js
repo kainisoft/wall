@@ -51,15 +51,25 @@ UICustom = class extends UserInterface {
     }
 };
 
+var atts = ['id', 'name', 'placeholder', 'required'];
+var data = ['label'];
+
 UIInput = class extends UICustom {
-    constructor( name ) {
+    constructor( options ) {
         super();
 
-        this.data.atts = {
-            name,
-            id: this.data.id,
-            className: []
-        };
+        this.data.atts = {};
+
+        if (_.isObject(options)) {
+            _.extend(this.data, _.pick(options, ...data));
+            _.extend(this.data.atts, {id: this.data.id}, _.pick(options, ...atts));
+        } else {
+            _.extend(this.data.atts, {
+                name: options, // it's string
+                id: this.data.id,
+                className: []
+            });
+        }
     }
 
     setAtts( key, value ) {

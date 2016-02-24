@@ -5,7 +5,7 @@ Forms.fieldSchema = new SimpleSchema({
     },
     type: {
         type: String,
-        allowedValues: ['text', 'select', 'SelectFromDataRange'],
+        allowedValues: ['text', 'select', 'Photo Uploader'],
         label: 'Type'
     },
     label: {
@@ -39,4 +39,8 @@ Forms.onBeforeInsert(function( userId, doc ) {
     _.each(doc.fields, function( field ) {
         field.name = Random.id();
     });
+
+    if (_.isEmpty(doc.name)) {
+        doc.name = Random.id();
+    }
 });
