@@ -1,0 +1,10 @@
+<template name="baseForm">
+    {{#autoForm atts}}
+        {{> afQuickField name="name"}}
+        {{> afQuickField name="fields"}}
+
+        {{#if showSubmit}}
+            <button class="ui button" type="submit">Submit</button>
+        {{/if}}
+    {{/autoForm}}
+</template>

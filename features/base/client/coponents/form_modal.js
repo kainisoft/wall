@@ -1,23 +1,8 @@
 Template.formModal.onCreated(function() {
-    this.doc = new ReactiveVar(null);
+    this.formId = new ReactiveVar(null);
 
-    this.showModal = ( categoryId ) => {
-        this.doc.set(null);
-        if (categoryId) {
-            this.autorun(() => {
-                this.subscribe('store.categoryForm.formByCategory', categoryId);
-            });
-
-            this.autorun(() => {
-                var categoryForm = StoreCategoryForm.findByKey('categoryId', categoryId);
-
-                if (categoryForm) {
-                    this.doc.set(
-                        Forms.findById(categoryForm.formId)
-                    );
-                }
-            });
-        }
+    this.data.onShowModal(( formId ) => {
+        this.formId.set(formId || null);
 
         return new Promise(( resolve, reject ) => {
             this.$('#form_builder').modal({
@@ -32,10 +17,10 @@ Template.formModal.onCreated(function() {
                                     resolve(res);
                                 }
                             },
-                            doc = this.doc.get();
+                            formId = this.formId.get();
 
-                        if (doc) {
-                            Meteor.call('forms.update', doc._id, formValues.updateDoc, handler);
+                        if (formId) {
+                            Meteor.call('forms.update', formId, formValues.updateDoc, handler);
                         } else {
                             Meteor.call('forms.insert', formValues.insertDoc, handler);
                         }
@@ -46,9 +31,7 @@ Template.formModal.onCreated(function() {
                 onDeny: reject
             }).modal('show');
         });
-    };
-
-    this.data.onShowModal(this.showModal);
+    });
 });
 
 Template.formModal.onRendered(function() {
@@ -56,6 +39,12 @@ Template.formModal.onRendered(function() {
 });
 
 Template.formModal.helpers({
+    atts() {
+        return {
+            id: 'form',
+            formId: Template.instance().formId.get()
+        };
+    },
     doc() {
         return Template.instance().doc.get();
     }

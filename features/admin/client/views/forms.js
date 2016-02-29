@@ -3,10 +3,6 @@ Template.adminForms.onCreated(function() {
         this.subscribe('Forms.Named');
     });
 
-    this.showCreateCategoryModal = () => {
-        this.$('.foom').modal({detachable: false}).modal('show');
-    };
-
     this.registerShowModalFunc = ( func ) => {
         this.showFormBuilderModal = ( formId ) => {
             func(formId).then(function( formId ) {
@@ -29,9 +25,13 @@ Template.adminForms.helpers({
 
 Template.adminForms.events({
     'click .js-add-form'( event, template ) {
-        template.showFormBuilderModal(null);
+        if (_.isFunction(template.showFormBuilderModal)) {
+            template.showFormBuilderModal(null);
+        }
     },
     'click .js-edit-form'( event, template ) {
-        template.showFormBuilderModal($(event.target).data('formId'));
+        if (_.isFunction(template.showFormBuilderModal)) {
+            template.showFormBuilderModal($(event.target).data('formId'));
+        }
     }
 });

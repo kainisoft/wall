@@ -18,6 +18,8 @@ Template.field.helpers({
                 return dd;
             case 'text':
                 return new UIText(field);
+            case 'textarea':
+                return new UITextArea(field);
             case 'Photo Uploader':
                 return null;
         }

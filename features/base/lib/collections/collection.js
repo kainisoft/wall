@@ -46,4 +46,8 @@ Collection = class {
     onBeforeInsert( func ) {
         this.collection.before.insert(func);
     }
+
+    onBeforeUpdate( func ) {
+        this.collection.before.update(func);
+    }
 };
